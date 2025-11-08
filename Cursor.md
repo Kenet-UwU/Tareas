@@ -1,4 +1,4 @@
-'''sql
+```sql
 
 -- 1. Declarar variables para guardar datos
 DECLARE @ProductoID INT, @Nombre VARCHAR(50), @Precio DECIMAL(10,2);
@@ -27,4 +27,4 @@ END;
 CLOSE mi_cursor;
 DEALLOCATE mi_cursor;
 
-'''
+```
