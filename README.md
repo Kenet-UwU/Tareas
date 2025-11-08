@@ -1,8 +1,3 @@
-# Tareas
-aqui estare guardando lo que pueda de tareas con codigo
-
-
-
 ```sql
 
  ---------  1. ROLES
@@ -33,7 +28,9 @@ DENY SELECT ON SCHEMA::audit TO rol_adminnegocio;
 -- RESTRICCIONES DE SEGURIDAD PARA rol_adminnegocio
 DENY ALTER ANY USER TO rol_adminnegocio;
 DENY CONTROL ON DATABASE::UG_EvaluacionSeguridad TO rol_adminnegocio;
+```
 
+```sql
 -------- 2. creacion de usuarios
 create user u_consulta1 without login;
 create user u_cajera1 without login;
@@ -45,11 +42,16 @@ ALTER ROLE rol_consulta ADD MEMBER u_consulta1;
 ALTER ROLE rol_cajero ADD MEMBER u_cajera1;
 ALTER ROLE rol_auditor ADD MEMBER u_auditor1;
 ALTER ROLE rol_adminnegocio ADD MEMBER u_admin1;
+```
 
+```sql
 ----- 3. restriccion directa en saldo
 deny update on core.Cuentas(Saldo) to rol_cajero;
 deny update on core.Cuentas(Saldo) to rol_consulta;
 
+```
+
+```sql
 -------- 4. bloqueo de esquema audit para todos menos rol auditor
 deny select on schema::audit to rol_consulta, rol_cajero, rol_adminnegocio;
 
